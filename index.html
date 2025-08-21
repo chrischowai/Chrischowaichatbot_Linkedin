@@ -4,12 +4,12 @@
   import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
   Chatbot.initFull({
     "n8nChatUrl": "https://n8nchrischowai.zeabur.app/webhook/34fd05e0-8f1e-4180-8373-6a0144cbe70b/chat",
-    "metadata": {
-            "n8nchatui": {
-        "sessionKey": "a069caf5-8661-4fed-95eb-e2074dbd0868"
-       }
-				},
-    "theme": {
+    "webhookConfig": { "headers" : {
+								"Content-Type": "application/json",
+								"X-Instance-Id": "8cc53b14e981136312657a7edd6b7b29df17edef321c22f51660f3152950d2d9",
+							}
+						},
+	"theme": {
       "button": {
         "iconColor": "#373434",
         "backgroundColor": "#ffc8b8"
@@ -76,6 +76,7 @@
     }
     }) ;
   </script>
+
 
 
 
