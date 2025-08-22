@@ -72,7 +72,7 @@
           if (storedExecutionId) {
             request.payload.executionId = storedExecutionId; // 加入到請求體
           }
-          const response = await fetch(request.url, {
+          const response = await fetch("https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(request.payload)
@@ -96,3 +96,4 @@
     </script>
   </body>
 </html>
+
