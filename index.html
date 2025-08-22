@@ -9,27 +9,32 @@
       let storedExecutionId = null;
 
       Chatbot.initFull({
-        n8nChatUrl: "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
+        n8nChatUrl:
+          "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
 
-        // Intercept every outgoing message
+        // 1. Attach executionId to every outgoing message
         onSend: (payload) => {
-          // payload is { text: string }
           if (storedExecutionId) {
             payload.executionId = storedExecutionId;
           }
-          // return the (possibly augmented) payload
           return payload;
         },
 
-        // Intercept every incoming response
-        onResponse: (data) => {
-          // data is what the webhook returned
-          // capture executionId for next turn
+        // 2. Expect a JSON { output, executionId } and keep the channel open
+        onResponse: async (data, respond) => {
+          // Capture executionId for subsequent turns
           if (data.executionId) {
             storedExecutionId = data.executionId;
           }
-          // pass the response back to n8nchatui to render
-          return data;
+
+          // Ensure we return exactly { output } back to the UI
+          respond({ output: data.output });
+        },
+
+        // 3. Handle errors by returning them in the required format
+        onError: (err, respond) => {
+          console.error(err);
+          respond({ output: "⚠️ An error occurred. Please try again." });
         },
 
         theme: {
@@ -42,7 +47,8 @@
             messageBorderRadius: 15,
             titleAvatarSrc: "Linkedin.png",
             avatarSize: 50,
-            welcomeMessage: "Hello! Please enter the title you want to search in Linkedin",
+            welcomeMessage:
+              "Hello! Please enter the title you want to search in Linkedin",
             errorMessage: "Error, please check",
             backgroundColor: "#ffffff",
             height: 0,
@@ -71,7 +77,8 @@
               textColor: "#1e1e1f",
               sendButtonColor: "#f36539",
               maxChars: 50,
-              maxCharsWarningMessage: "You exceeded the characters limit. Please input less than 50 characters.",
+              maxCharsWarningMessage:
+                "You exceeded the characters limit. Please input less than 50 characters.",
               autoFocus: false,
               borderRadius: 6,
               sendButtonBorderRadius: 50,
