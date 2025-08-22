@@ -3,12 +3,10 @@
   <body>
     <n8nchatui-inpage></n8nchatui-inpage>
 
-    <script type="module" defer>
-      import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
+    <script src="chat.bundle.es.js"></script> <!-- 替換 embed.js，確保此檔案已下載並放置於正確路徑 -->
 
-      let storedExecutionId = localStorage.getItem('n8nExecutionId') || null;
-
-      Chatbot.initFull({
+    <script>
+      createChat({
         n8nChatUrl: "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
         theme: {
           button: { iconColor: "#373434", backgroundColor: "#ffc8b8" },
@@ -67,33 +65,7 @@
             },
           },
         },
-        onRequest: async (request) => {
-          // 自訂請求：加入 storedExecutionId 到 payload
-          if (storedExecutionId) {
-            request.payload.executionId = storedExecutionId; // 加入到請求體
-          }
-          const response = await fetch("https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(request.payload)
-          });
-          const data = await response.json();
-
-          // 處理回應：若有 executionId，儲存並顯示等待訊息
-          if (data.executionStarted && data.executionId) {
-            storedExecutionId = data.executionId;
-            localStorage.setItem('n8nExecutionId', storedExecutionId);
-            // 模擬顯示訊息（n8nchatui 會自動渲染 output，但這裡強制）
-            return { output: "Do you want to search for more profile? (Enter:Yes / No)" }; // 前端模擬顯示
-          } else {
-            // 正常回應，清空 ID
-            storedExecutionId = null;
-            localStorage.removeItem('n8nExecutionId');
-            return data;
-          }
-        }
       });
     </script>
   </body>
 </html>
-
