@@ -1,76 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-  <body>
-    <n8nchatui-inpage></n8nchatui-inpage>
-
-    <script type="module" defer>
-      import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
-
-      let storedExecutionId = null;
-
-      Chatbot.initFull({
-        n8nChatUrl:
-          "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
-          theme: {
-          button: { iconColor: "#373434", backgroundColor: "#ffc8b8" },
-          chatWindow: {
-            showTitle: true,
-            title: "Linkedin Profile Searching Chatbot",
-            borderRadiusStyle: "none",
-            avatarBorderRadius: 0,
-            messageBorderRadius: 15,
-            titleAvatarSrc: "Linkedin.png",
-            avatarSize: 50,
-            welcomeMessage:
-              "Hello! Please enter the title you want to search in Linkedin",
-            errorMessage: "Error, please check",
-            backgroundColor: "#ffffff",
-            height: 0,
-            width: 0,
-            fontSize: 20,
-            starterPrompts: [],
-            starterPromptFontSize: 15,
-            renderHTML: false,
-            clearChatOnReload: false,
-            showScrollbar: false,
-            botMessage: {
-              backgroundColor: "#f36539",
-              textColor: "#fafafa",
-              showAvatar: true,
-              avatarSrc: "https://www.svgrepo.com/show/334455/bot.svg",
-            },
-            userMessage: {
-              backgroundColor: "#fff6f3",
-              textColor: "#050505",
-              showAvatar: true,
-              avatarSrc: "https://www.svgrepo.com/show/532363/user-alt-1.svg",
-            },
-            textInput: {
-              placeholder: "Enter the title to search",
-              backgroundColor: "#ffffff",
-              textColor: "#1e1e1f",
-              sendButtonColor: "#f36539",
-              maxChars: 50,
-              maxCharsWarningMessage:
-                "You exceeded the characters limit. Please input less than 50 characters.",
-              autoFocus: false,
-              borderRadius: 6,
-              sendButtonBorderRadius: 50,
-            },
-            uploadsConfig: {
-              enabled: true,
-              acceptFileTypes: ["jpeg", "jpg", "png", "pdf"],
-              maxFiles: 5,
-              maxSizeInMB: 10,
-            },
-            voiceInputConfig: {
-              enabled: true,
-              maxRecordingTime: 15,
-              recordingNotSupportedMessage:
-                "To record audio, use modern browsers like Chrome or Firefox that support audio recording",
-            },
-          },
-        },
-      });
-    </script>
-  </body>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content">
+    <link rel="stylesheet" href="https://unpkg.com/n8n-chat-embed-widget@latest/cdn/style.css">
+</head>
+<body>
+    <!-- Auto-initializes as floating chat -->
+    <script 
+        src="https://unpkg.com/n8n-chat-embed-widget@latest/cdn/n8n-chat-embed.umd.js"
+        data-webhook-url="n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat"
+        data-auto-init="true"
+        data-title="AI Assistant"
+        data-theme="light"
+    ></script>
+</body>
+</html>
+        
