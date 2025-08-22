@@ -3,18 +3,15 @@
   <body>
     <n8nchatui-inpage></n8nchatui-inpage>
 
-    <!-- 載入 chat.bundle.es.js 作為模組 -->
-    <script type="module" src="./chat.bundle.es.js"></script>
+    <script type="module" defer>
+      import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
 
-    <!-- 初始化腳本，使用 import 導入 createChat -->
-    <script type="module">
-      // 導入 createChat 函數
-      import { createChat } from './chat.bundle.es.js';
+      let storedExecutionId = null;
 
-      // 初始化聊天界面
-      createChat({
-        n8nChatUrl: "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
-        theme: {
+      Chatbot.initFull({
+        n8nChatUrl:
+          "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
+          theme: {
           button: { iconColor: "#373434", backgroundColor: "#ffc8b8" },
           chatWindow: {
             showTitle: true,
@@ -24,7 +21,8 @@
             messageBorderRadius: 15,
             titleAvatarSrc: "Linkedin.png",
             avatarSize: 50,
-            welcomeMessage: "Hello! Please enter the title you want to search in Linkedin",
+            welcomeMessage:
+              "Hello! Please enter the title you want to search in Linkedin",
             errorMessage: "Error, please check",
             backgroundColor: "#ffffff",
             height: 0,
@@ -53,7 +51,8 @@
               textColor: "#1e1e1f",
               sendButtonColor: "#f36539",
               maxChars: 50,
-              maxCharsWarningMessage: "You exceeded the characters limit. Please input less than 50 characters.",
+              maxCharsWarningMessage:
+                "You exceeded the characters limit. Please input less than 50 characters.",
               autoFocus: false,
               borderRadius: 6,
               sendButtonBorderRadius: 50,
@@ -67,12 +66,11 @@
             voiceInputConfig: {
               enabled: true,
               maxRecordingTime: 15,
-              recordingNotSupportedMessage: "To record audio, use modern browsers like Chrome or Firefox that support audio recording",
+              recordingNotSupportedMessage:
+                "To record audio, use modern browsers like Chrome or Firefox that support audio recording",
             },
           },
         },
       });
     </script>
   </body>
-</html>
-
