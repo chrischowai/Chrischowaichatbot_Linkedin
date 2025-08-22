@@ -1,101 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+  <body>
+    <n8nchatui-inpage></n8nchatui-inpage>
 
-<body>
-	
-<n8nchatui-inpage></n8nchatui-inpage>
+    <script type="module" defer>
+      import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
 
-<script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
-  Chatbot.initFull({
-    "n8nChatUrl": "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
-   	"theme": {
-      "button": {
-        "iconColor": "#373434",
-        "backgroundColor": "#ffc8b8"
-             },
-      "chatWindow": {
-        "showTitle": true,
-        "title": "Linkedin Profile Searching Chatbot",       
-        "borderRadiusStyle": "none", // 移除 rounded 效果
-        "avatarBorderRadius": 0,     // 設置為 0 以確保長方形
-        "messageBorderRadius": 15,
-        "titleAvatarSrc": "Linkedin.png",
-        "avatarSize": 50,
-        "welcomeMessage": "Hello! Please enter the title you want to search in Linkedin",
-        "errorMessage": "Error, please check",
-        "backgroundColor": "#ffffff",
-        "height": 0,
-        "width": 0,
-        "fontSize": 20,
-        "starterPrompts": [  ],
-        "starterPromptFontSize": 15,
-        "renderHTML": false,
-        "clearChatOnReload": false,
-        "showScrollbar": false,
-        "botMessage": {
-          "backgroundColor": "#f36539",
-          "textColor": "#fafafa",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/334455/bot.svg"
+      let storedExecutionId = null;
+
+      Chatbot.initFull({
+        n8nChatUrl: "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
+
+        // Intercept every outgoing message
+        onSend: (payload) => {
+          // payload is { text: string }
+          if (storedExecutionId) {
+            payload.executionId = storedExecutionId;
+          }
+          // return the (possibly augmented) payload
+          return payload;
         },
-        "userMessage": {
-          "backgroundColor": "#fff6f3",
-          "textColor": "#050505",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/532363/user-alt-1.svg"
+
+        // Intercept every incoming response
+        onResponse: (data) => {
+          // data is what the webhook returned
+          // capture executionId for next turn
+          if (data.executionId) {
+            storedExecutionId = data.executionId;
+          }
+          // pass the response back to n8nchatui to render
+          return data;
         },
-        "textInput": {
-          "placeholder": "Enter the title to search",
-          "backgroundColor": "#ffffff",
-          "textColor": "#1e1e1f",
-          "sendButtonColor": "#f36539",
-          "maxChars": 50,
-          "maxCharsWarningMessage": "You exceeded the characters limit. Please input less than 50 characters.",
-          "autoFocus": false,
-          "borderRadius": 6,
-          "sendButtonBorderRadius": 50
+
+        theme: {
+          button: { iconColor: "#373434", backgroundColor: "#ffc8b8" },
+          chatWindow: {
+            showTitle: true,
+            title: "Linkedin Profile Searching Chatbot",
+            borderRadiusStyle: "none",
+            avatarBorderRadius: 0,
+            messageBorderRadius: 15,
+            titleAvatarSrc: "Linkedin.png",
+            avatarSize: 50,
+            welcomeMessage: "Hello! Please enter the title you want to search in Linkedin",
+            errorMessage: "Error, please check",
+            backgroundColor: "#ffffff",
+            height: 0,
+            width: 0,
+            fontSize: 20,
+            starterPrompts: [],
+            starterPromptFontSize: 15,
+            renderHTML: false,
+            clearChatOnReload: false,
+            showScrollbar: false,
+            botMessage: {
+              backgroundColor: "#f36539",
+              textColor: "#fafafa",
+              showAvatar: true,
+              avatarSrc: "https://www.svgrepo.com/show/334455/bot.svg",
+            },
+            userMessage: {
+              backgroundColor: "#fff6f3",
+              textColor: "#050505",
+              showAvatar: true,
+              avatarSrc: "https://www.svgrepo.com/show/532363/user-alt-1.svg",
+            },
+            textInput: {
+              placeholder: "Enter the title to search",
+              backgroundColor: "#ffffff",
+              textColor: "#1e1e1f",
+              sendButtonColor: "#f36539",
+              maxChars: 50,
+              maxCharsWarningMessage: "You exceeded the characters limit. Please input less than 50 characters.",
+              autoFocus: false,
+              borderRadius: 6,
+              sendButtonBorderRadius: 50,
+            },
+            uploadsConfig: {
+              enabled: true,
+              acceptFileTypes: ["jpeg", "jpg", "png", "pdf"],
+              maxFiles: 5,
+              maxSizeInMB: 10,
+            },
+            voiceInputConfig: {
+              enabled: true,
+              maxRecordingTime: 15,
+              recordingNotSupportedMessage:
+                "To record audio, use modern browsers like Chrome or Firefox that support audio recording",
+            },
+          },
         },
-        "uploadsConfig": {
-          "enabled": true,
-          "acceptFileTypes": [
-            "jpeg",
-            "jpg",
-            "png",
-            "pdf"
-          ],
-          "maxFiles": 5,
-          "maxSizeInMB": 10
-        },
-        "voiceInputConfig": {
-          "enabled": true,
-          "maxRecordingTime": 15,
-          "recordingNotSupportedMessage": "To record audio, use modern browsers like Chrome or Firefox that support audio recording"
-        }
-      }
-    }
-    }) ;
-  </script>
-
-	</body>
-	</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      });
+    </script>
+  </body>
+</html>
