@@ -3,9 +3,15 @@
   <body>
     <n8nchatui-inpage></n8nchatui-inpage>
 
-    <script src="chat.bundle.es.js"></script> 
+    <!-- 載入 chat.bundle.es.js 作為模組 -->
+    <script type="module" src="./chat.bundle.es.js"></script>
 
-    <script>
+    <!-- 初始化腳本，使用 import 導入 createChat -->
+    <script type="module">
+      // 導入 createChat 函數
+      import { createChat } from './chat.bundle.es.js';
+
+      // 初始化聊天界面
       createChat({
         n8nChatUrl: "https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat",
         theme: {
