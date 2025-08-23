@@ -88,7 +88,15 @@
   font-family: var(--chat--font-family) !important;
 }
 
-
+/* 1. Hide default header content and replace with custom title */
+.n8n-chat .chat-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /* LinkedIn logo positioning */
 .n8n-chat .chat-header::before {
@@ -362,6 +370,7 @@ div[class*="user"]:not(.chat-header)::after {
 			</script>
 		</body>
 	</html>
+
 
 
 
