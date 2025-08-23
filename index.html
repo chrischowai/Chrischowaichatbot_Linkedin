@@ -44,7 +44,7 @@
   --chat--window--margin-bottom: 0;
   
   /* Header */
-  --chat--header-height: 150px;
+  --chat--header-height: 100px;
   --chat--header--padding: 2rem;
   --chat--header--background: #ffc8b8;
   --chat--header--color: #373434;
@@ -88,15 +88,7 @@
   font-family: var(--chat--font-family) !important;
 }
 
-/* 1. Hide default header content and replace with custom title */
-.n8n-chat .chat-header {
-  position: relative;
-  text-align: center;
-  padding: 1rem !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /* LinkedIn logo positioning */
 .n8n-chat .chat-header::before {
@@ -105,8 +97,8 @@
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   background-image: url('https://i.ibb.co/Ps1SdvTn/Linkedin.png');
   background-size: contain;
   background-repeat: no-repeat;
@@ -363,13 +355,14 @@ div[class*="user"]:not(.chat-header)::after {
 						i18n: {
 							
 						},
-						initialMessages: ["Linkedin Searching"],
+						initialMessages: ["Happy Linkedin profile searching, please enter the title below"],
 						enableStreaming: false,
 					});
 				})();
 			</script>
 		</body>
 	</html>
+
 
 
 
