@@ -1,77 +1,388 @@
-<n8nchatui-inpage></n8nchatui-inpage>
+<!doctype html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<title>Chat</title>
+			<link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet" />
+			<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+			<style>
+				html,
+				body,
+				#n8n-chat {
+					width: 100%;
+					height: 100%;
+				}
+			</style>
+			<style>:root {
+  --chat--color-primary: #f36539;
+  --chat--color-primary-shade-50: #e5552a;
+  --chat--color-primary-shade-100: #d6461b;
+  --chat--color-secondary: #fff6f3;
+  --chat--color-secondary-shade-50: #ffe6dd;
+  --chat--color-white: #ffffff;
+  --chat--color-light: #ffffff;
+  --chat--color-light-shade-50: #f5f5f5;
+  --chat--color-light-shade-100: #e0e0e0;
+  --chat--color-medium: #d2d4d9;
+  --chat--color-dark: #050505;
+  --chat--color-disabled: #777980;
+  --chat--color-typing: #404040;
+  --chat--spacing: 1rem;
+  --chat--border-radius: 6px;
+  --chat--transition-duration: .15s;
+  --chat--font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  
+  /* Window settings - full page */
+  --chat--window--width: 100%;
+  --chat--window--height: 100%;
+  --chat--window--bottom: 0;
+  --chat--window--right: 0;
+  --chat--window--z-index: 9999;
+  --chat--window--border: none;
+  --chat--window--border-radius: 0;
+  --chat--window--margin-bottom: 0;
+  
+  /* Header */
+  --chat--header-height: auto;
+  --chat--header--padding: 1rem;
+  --chat--header--background: #ffc8b8;
+  --chat--header--color: #373434;
+  --chat--header--border-top: none;
+  --chat--header--border-bottom: 1px solid #f5d4c8;
+  --chat--header--border-left: none;
+  --chat--header--border-right: none;
+  
+  /* Typography */
+  --chat--heading--font-size: 1.25rem;
+  --chat--subtitle--font-size: 0.875rem;
+  --chat--subtitle--line-height: 1.5;
+  --chat--message--font-size: 1rem;
+  --chat--message--padding: 0.75rem 1rem;
+  --chat--message--border-radius: 6px;
+  --chat--message-line-height: 1.5;
+  --chat--message--margin-bottom: 0.5rem;
+  
+  /* Bot messages */
+  --chat--message--bot--background: #f36539;
+  --chat--message--bot--color: #fafafa;
+  --chat--message--bot--border: none;
+  
+  /* User messages */
+  --chat--message--user--background: #fff6f3;
+  --chat--message--user--color: #050505;
+  --chat--message--user--border: none;
+  
+  /* Pre-formatted text */
+  --chat--message--pre--background: rgba(0, 0, 0, .05);
+  
+  /* Messages list */
+  --chat--messages-list--padding: 1rem 3rem 1rem 3rem;
+  
+  /* Body and footer */
+  --chat--body--background: #ffffff;
+  --chat--footer--background: #ffffff;
+  --chat--footer--color: #050505;
+}
 
-<script type="module" defer>
-  import Chatbot from "https://cdn.n8nchatui.com/v1/embed.js";
-  Chatbot.initFull({
-    "n8nChatUrl": " https://chrischowai.zeabur.app/webhook/34fd05e0-8f1e-4180-8373-6a0144cbe70b/chat",
-    "metadata": {}, // Include any custom data to send with each message to your n8n workflow
-    "theme": {
-      "button": {
-        "iconColor": "#373434",
-        "backgroundColor": "#ffc8b8"
-      },
-      "chatWindow": {
-        "borderRadiusStyle": "rounded",
-        "avatarBorderRadius": 25,
-        "messageBorderRadius": 6,
-        "showTitle": true,
-        "title": "Linkedin Profile Searching Tool",
-        "titleAvatarSrc": "Linkedin.png",
-        "avatarSize": 40,
-        "welcomeMessage": "Hello! Please enter the title you want to search in Linkedin",
-        "errorMessage": "Please connect me to n8n first",
-        "backgroundColor": "#ffffff",
-        "height": 0,
-        "width": 0,
-        "fontSize": 16,
-        "starterPrompts": [
-         
-        ],
-        "starterPromptFontSize": 15,
-        "renderHTML": false,
-        "clearChatOnReload": false,
-        "showScrollbar": false,
-        "botMessage": {
-          "backgroundColor": "#f36539",
-          "textColor": "#fafafa",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/334455/bot.svg"
-        },
-        "userMessage": {
-          "backgroundColor": "#fff6f3",
-          "textColor": "#050505",
-          "showAvatar": true,
-          "avatarSrc": "https://www.svgrepo.com/show/532363/user-alt-1.svg"
-        },
-        "textInput": {
-          "placeholder": "Enter the title to search",
-          "backgroundColor": "#ffffff",
-          "textColor": "#1e1e1f",
-          "sendButtonColor": "#f36539",
-          "maxChars": 50,
-          "maxCharsWarningMessage": "You exceeded the characters limit. Please input less than 50 characters.",
-          "autoFocus": false,
-          "borderRadius": 6,
-          "sendButtonBorderRadius": 50
-        },
-        "uploadsConfig": {
-          "enabled": true,
-          "acceptFileTypes": [
-            "jpeg",
-            "jpg",
-            "png",
-            "pdf"
-          ],
-          "maxFiles": 5,
-          "maxSizeInMB": 10
-        },
-        "voiceInputConfig": {
-          "enabled": true,
-          "maxRecordingTime": 15,
-          "recordingNotSupportedMessage": "To record audio, use modern browsers like Chrome or Firefox that support audio recording"
-        }
-      }
-    }
-    });
-  </script>
+/* Additional custom styles */
+.n8n-chat {
+  font-family: var(--chat--font-family) !important;
+}
 
+/* 1. Hide default header content and replace with custom title */
+.n8n-chat .chat-header {
+  position: relative;
+  text-align: center;
+  padding: 1rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide the default "Hi there!" and subtitle */
+.n8n-chat .chat-header-title,
+.n8n-chat .chat-header-subtitle {
+  display: none !important;
+}
+
+/* Add custom title */
+.n8n-chat .chat-header::after {
+  content: 'LinkedIn Profile Searching Tool';
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #373434;
+}
+
+/* LinkedIn logo positioning */
+.n8n-chat .chat-header::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-image: url('https://i.ibb.co/Ps1SdvTn/Linkedin.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* 2. Message styling with avatars */
+.n8n-chat .chat-messages-list {
+  background: #ffffff;
+  position: relative;
+}
+
+/* Bot messages */
+.n8n-chat [class*="message"][class*="bot"],
+.n8n-chat .chat-message.bot,
+.n8n-chat .message-bot,
+.n8n-chat div[class*="bot"][class*="message"] {
+  margin-right: auto !important;
+  max-width: calc(70% - 50px) !important;
+  position: relative !important;
+  margin-left: 50px !important;
+  margin-bottom: 1rem !important;
+}
+
+/* Bot avatar - 移除背景顏色 */
+.n8n-chat [class*="message"][class*="bot"]::before,
+.n8n-chat .chat-message.bot::before,
+.n8n-chat .message-bot::before,
+.n8n-chat div[class*="bot"][class*="message"]::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -50px !important;
+  top: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: transparent !important; /* 移除背景顏色 */
+  background-image: url('https://www.svgrepo.com/show/334455/bot.svg') !important;
+  background-position: center !important;
+  background-size: 40px 40px !important; /* 調整圖標大小 */
+  background-repeat: no-repeat !important;
+  border: 2px solid #ddd !important; /* 添加淺色邊框以便識別 */
+}
+
+/* User messages */
+.n8n-chat [class*="message"][class*="user"],
+.n8n-chat .chat-message.user,
+.n8n-chat .message-user,
+.n8n-chat div[class*="user"][class*="message"] {
+  margin-left: auto !important;
+  max-width: calc(70% - 50px) !important;
+  position: relative !important;
+  margin-right: 50px !important;
+  margin-bottom: 1rem !important;
+  text-align: right !important;
+}
+
+/* User avatar */
+.n8n-chat [class*="message"][class*="user"]::after,
+.n8n-chat .chat-message.user::after,
+.n8n-chat .message-user::after,
+.n8n-chat div[class*="user"][class*="message"]::after {
+  content: '' !important;
+  position: absolute !important;
+  right: -50px !important;
+  top: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background-color: #ff6b6b !important;
+  background-image: url('https://www.svgrepo.com/show/532363/user-alt-1.svg') !important;
+  background-position: center !important;
+  background-size: 24px 24px !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Alternative approach using attribute selectors */
+[data-message-type="bot"],
+[data-role="bot"],
+div[class*="bot"]:not(.chat-header) {
+  position: relative !important;
+  margin-left: 50px !important;
+}
+
+[data-message-type="bot"]::before,
+[data-role="bot"]::before,
+div[class*="bot"]:not(.chat-header)::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -50px !important;
+  top: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: transparent url('https://www.svgrepo.com/show/334455/bot.svg') center/40px no-repeat !important;
+  border: 2px solid #ddd !important;
+}
+
+[data-message-type="user"],
+[data-role="user"],
+div[class*="user"]:not(.chat-header) {
+  position: relative !important;
+  margin-right: 50px !important;
+  text-align: right !important;
+}
+
+[data-message-type="user"]::after,
+[data-role="user"]::after,
+div[class*="user"]:not(.chat-header)::after {
+  content: '' !important;
+  position: absolute !important;
+  right: -50px !important;
+  top: 0 !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: #ff6b6b url('https://www.svgrepo.com/show/532363/user-alt-1.svg') center/24px no-repeat !important;
+}
+
+/* Message text styling */
+.n8n-chat .chat-message-text,
+.n8n-chat [class*="message-text"] {
+  display: inline-block;
+  text-align: left;
+}
+
+/* 3. 修復底部輸入框樣式 - 參考目標圖片 */
+.n8n-chat .chat-input-container,
+.n8n-chat [class*="input-container"],
+.n8n-chat .chat-footer,
+.n8n-chat [class*="footer"] {
+  background: #ffffff !important;
+  border: none !important;
+  padding: 1rem !important;
+  box-shadow: none !important;
+}
+
+/* 移除所有奇怪的邊框和背景 */
+.n8n-chat .chat-footer *,
+.n8n-chat [class*="footer"] *,
+.n8n-chat .chat-input-container *,
+.n8n-chat [class*="input-container"] * {
+  box-shadow: none !important;
+  border: none !important;
+  background: transparent !important;
+}
+
+/* 主要輸入框容器 */
+.n8n-chat .chat-input-wrapper,
+.n8n-chat [class*="input-wrapper"] {
+  display: flex !important;
+  align-items: center !important;
+  background: #ffffff !important;
+  border: 1px solid #0077b5 !important; /* LinkedIn 藍色邊框 */
+  border-radius: 8px !important;
+  padding: 0.5rem !important;
+  gap: 0.5rem !important;
+  box-shadow: none !important;
+}
+
+/* 輸入框本身 */
+.n8n-chat input[type="text"],
+.n8n-chat textarea,
+.n8n-chat .chat-input,
+.n8n-chat [class*="input"]:not([class*="container"]):not([class*="wrapper"]) {
+  flex: 1 !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  padding: 0.5rem !important;
+  font-size: 1rem !important;
+  color: #050505 !important;
+  font-family: var(--chat--font-family) !important;
+}
+
+/* 輸入框佔位符文字 */
+.n8n-chat input::placeholder,
+.n8n-chat textarea::placeholder {
+  color: #999 !important;
+  font-style: normal !important;
+}
+
+/* 麥克風圖標 */
+.n8n-chat [class*="microphone"],
+.n8n-chat [class*="voice"] {
+  background: transparent !important;
+  border: none !important;
+  padding: 0.5rem !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.n8n-chat [class*="microphone"] svg,
+.n8n-chat [class*="voice"] svg {
+  width: 20px !important;
+  height: 20px !important;
+  fill: #0077b5 !important;
+  stroke: #0077b5 !important;
+}
+
+
+}
+</style>
+		</head>
+		<body>
+			<script type="module">
+				import { createChat } from 'chat.bundle.es.js';
+
+				(async function () {
+					const authentication = 'none';
+					let metadata;
+					if (authentication === 'n8nUserAuth') {
+						try {
+							const response = await fetch('/rest/login', {
+									method: 'GET',
+									headers: { 'browser-id': localStorage.getItem('n8n-browserId') }
+							});
+
+							if (response.status !== 200) {
+								throw new Error('Not logged in');
+							}
+
+							const responseData = await response.json();
+							metadata = {
+								user: {
+									id: responseData.data.id,
+									firstName: responseData.data.firstName,
+									lastName: responseData.data.lastName,
+									email: responseData.data.email,
+								},
+							};
+						} catch (error) {
+							window.location.href = '/signin?redirect=' + window.location.href;
+							return;
+						}
+					}
+
+					createChat({
+						mode: 'fullscreen',
+						webhookUrl: 'https://n8nchrischowai.zeabur.app/webhook/a01a9804-ae51-45c5-8d40-6b3b247cc11f/chat',
+						showWelcomeScreen: false,
+						loadPreviousSession: false,
+						metadata: metadata,
+						webhookConfig: {
+							headers: {
+								'Content-Type': 'application/json',
+								'X-Instance-Id': '8cc53b14e981136312657a7edd6b7b29df17edef321c22f51660f3152950d2d9',
+							}
+						},
+						allowFileUploads: false,
+						allowedFilesMimeTypes: '*',
+						i18n: {
+							
+						},
+						initialMessages: ["Linkedin Searching"],
+						enableStreaming: false,
+					});
+				})();
+			</script>
+		</body>
+	</html>
