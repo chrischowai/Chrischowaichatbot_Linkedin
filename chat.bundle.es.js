@@ -4599,14 +4599,11 @@ const Ro = {
   chatSessionKey: "sessionId",
   defaultLanguage: "en",
   showWelcomeScreen: !1,
-  initialMessages: ["Hi there! 👋", "My name is Nathan. How can I assist you today?"],
   i18n: {
     en: {
-      title: "Hi there! 👋",
-      subtitle: "Start a chat. We're here to help you 24/7.",
-      footer: "",
-      getStarted: "New Conversation",
-      inputPlaceholder: "Type your question..",
+      title: "LinkedIn Profile Searching Bot",
+      getStarted: "Enter the title you would like to search for",
+      inputPlaceholder: "Type here please",
       closeButtonTooltip: "Close chat"
     }
   },
@@ -21991,18 +21988,18 @@ function Yve() {
           continue;
         }
         if ((u & 224) === 192 && a + 3 < l && (f = parseInt(i.slice(a + 4, a + 6), 16), (f & 192) === 128)) {
-          d = u << 6 & 1984 | f & 63, d < 128 ? m += "��" : m += String.fromCharCode(d), a += 3;
+          d = u << 6 & 1984 | f & 63, d < 128 ? m += "  " : m += String.fromCharCode(d), a += 3;
           continue;
         }
         if ((u & 240) === 224 && a + 6 < l && (f = parseInt(i.slice(a + 4, a + 6), 16), c = parseInt(i.slice(a + 7, a + 9), 16), (f & 192) === 128 && (c & 192) === 128)) {
-          d = u << 12 & 61440 | f << 6 & 4032 | c & 63, d < 2048 || d >= 55296 && d <= 57343 ? m += "���" : m += String.fromCharCode(d), a += 6;
+          d = u << 12 & 61440 | f << 6 & 4032 | c & 63, d < 2048 || d >= 55296 && d <= 57343 ? m += "   " : m += String.fromCharCode(d), a += 6;
           continue;
         }
         if ((u & 248) === 240 && a + 9 < l && (f = parseInt(i.slice(a + 4, a + 6), 16), c = parseInt(i.slice(a + 7, a + 9), 16), p = parseInt(i.slice(a + 10, a + 12), 16), (f & 192) === 128 && (c & 192) === 128 && (p & 192) === 128)) {
-          d = u << 18 & 1835008 | f << 12 & 258048 | c << 6 & 4032 | p & 63, d < 65536 || d > 1114111 ? m += "����" : (d -= 65536, m += String.fromCharCode(55296 + (d >> 10), 56320 + (d & 1023))), a += 9;
+          d = u << 18 & 1835008 | f << 12 & 258048 | c << 6 & 4032 | p & 63, d < 65536 || d > 1114111 ? m += "    " : (d -= 65536, m += String.fromCharCode(55296 + (d >> 10), 56320 + (d & 1023))), a += 9;
           continue;
         }
-        m += "�";
+        m += " ";
       }
       return m;
     });
@@ -22521,7 +22518,7 @@ function abe() {
   return ol = function(r) {
     var s;
     s = r.src.replace(e, `
-`), s = s.replace(t, "�"), r.src = s;
+`), s = s.replace(t, " "), r.src = s;
   }, ol;
 }
 var sl, Vp;
