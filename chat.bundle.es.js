@@ -27780,8 +27780,7 @@ const Fye = { name: "mdi-chevron-down", render: Bye }, qye = { class: "chat-wind
             })
           ], 8, Zye)) : _e("", !0)
         ]),
-        b(t)("subtitle") ? (w(), A("p", Xye, Je(b(t)("subtitle")), 1)) : _e("", !0)
-      ]),
+            ]),
       footer: he(() => [
         b(s) ? (w(), ue(Gk, { key: 0 })) : (w(), ue(ak, { key: 1 }))
       ]),
