@@ -14,7 +14,7 @@
 					height: 100%;
 				}
 			</style>
-			<style>:root {
+<style>:root {
   --chat--color-primary: #f36539;
   --chat--color-primary-shade-50: #e5552a;
   --chat--color-primary-shade-100: #d6461b;
@@ -55,6 +55,8 @@
   
   /* Typography */
   --chat--heading--font-size: 2rem;
+  --chat--subtitle--font-size: 0 !important; /* 設置為 0 來隱藏 */
+  --chat--subtitle--line-height: 0 !important; /* 設置為 0 來隱藏 */
   --chat--message--font-size: 1rem;
   --chat--message--padding: 0.75rem 1rem;
   --chat--message--border-radius: 6px;
@@ -98,6 +100,38 @@
   justify-content: center;
 }
 
+/* 完全隱藏所有預設的標題和副標題元素 */
+.n8n-chat .chat-header-title,
+.n8n-chat .chat-header-subtitle,
+.n8n-chat [class*="subtitle"],
+.n8n-chat [class*="header"] [class*="subtitle"],
+.n8n-chat [class*="title"]:not(.chat-header),
+.n8n-chat [class*="header"] [class*="title"],
+.n8n-chat .chat-header > *:not(::before):not(::after) {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  opacity: 0 !important;
+}
+
+/* 添加自定義標題 */
+.n8n-chat .chat-header::after {
+  content: 'LinkedIn Profile Searching Bot';
+  font-size: 2rem;
+  font-weight: 600;
+  color: #373434;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  z-index: 10;
+}
+
 /* LinkedIn logo positioning */
 .n8n-chat .chat-header::before {
   content: '';
@@ -110,6 +144,7 @@
   background-image: url('https://i.ibb.co/Ps1SdvTn/Linkedin.png');
   background-size: contain;
   background-repeat: no-repeat;
+  z-index: 10;
 }
 
 /* 2. Message styling with avatars */
@@ -370,6 +405,7 @@ div[class*="user"]:not(.chat-header)::after {
 			</script>
 		</body>
 	</html>
+
 
 
 
